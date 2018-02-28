@@ -1,7 +1,7 @@
 # NuSOAP for PHP 5.4 - 7.1
 
-[![Downloads total](https://img.shields.io/packagist/dt/econea/nusoap.svg?style=flat-square)](https://packagist.org/packages/econea/nusoap)
-[![Latest stable](https://img.shields.io/packagist/v/econea/nusoap.svg?style=flat-square)](https://packagist.org/packages/econea/nusoap)
+[![Downloads total](https://img.shields.io/packagist/dt/ne0bot/nusoap.svg?style=flat-square)](https://packagist.org/packages/ne0bot/nusoap)
+[![Latest stable](https://img.shields.io/packagist/v/ne0bot/nusoap.svg?style=flat-square)](https://packagist.org/packages/ne0bot/nusoap)
 
 Fork of NuSOAP fixed for PHP 5.4, 5.5, 5.6, 7.0 and 7.1 (tested).
 

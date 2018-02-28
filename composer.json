@@ -1,5 +1,5 @@
 {
-  "name": "econea/nusoap",
+  "name": "ne0bot/nusoap",
   "type": "library",
   "description": "NuSOAP fixed for PHP 5.4 - 7.1",
   "keywords": ["soap","nusoap"],
@@ -10,6 +10,9 @@
     },
     {
       "name": "Martin Macejkou Mates"
+    },
+    {
+        "name":"Jose Castro"
     }
   ],
   "require": {

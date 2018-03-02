@@ -53,7 +53,7 @@
 
 namespace nusoap;
 
-use base;
+use nusoap\base;
 
 /**
  *

@@ -54,6 +54,7 @@
 namespace nusoap;
 
 use nusoap\base;
+use nusoap\xmlschema;
 
 /**
  * parses a WSDL file, allows access to it's data, other utility methods.
@@ -358,7 +359,7 @@ class wsdl extends base {
             $this->debug('Parsing WSDL schema');
             // $this->debug("startElement for $name ($attrs[name]). status = $this->status (".$this->getLocalPart($name).")");
             $this->status = 'schema';
-            $this->currentSchema = new nusoap_xmlschema('', '', $this->namespaces);
+            $this->currentSchema = new xmlschema('', '', $this->namespaces);
             $this->currentSchema->schemaStartElement($parser, $name, $attrs);
             $this->appendDebug($this->currentSchema->getDebug());
             $this->currentSchema->clearDebug();

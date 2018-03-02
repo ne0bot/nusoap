@@ -54,6 +54,9 @@
 namespace nusoap;
 
 use nusoap\base;
+use nusoap\xmlschema;
+use nusoap\parser;
+use nusoap\fault;
 
 /**
  *
@@ -753,7 +756,7 @@ class server extends base {
     function serialize_return() {
         $this->debug('Entering serialize_return methodname: ' . $this->methodname . ' methodURI: ' . $this->methodURI);
         // if fault
-        if (isset($this->methodreturn) && is_object($this->methodreturn) && ((get_class($this->methodreturn) == 'soap_fault') || (get_class($this->methodreturn) == 'nusoap_fault'))) {
+        if (isset($this->methodreturn) && is_object($this->methodreturn) && ((get_class($this->methodreturn) == 'soap_fault') || (get_class($this->methodreturn) == 'fault'))) {
             $this->debug('got a fault object from method');
             $this->fault = $this->methodreturn;
             return;
@@ -973,7 +976,7 @@ class server extends base {
         }
         $this->debug('Use encoding: ' . $this->xml_encoding . ' when creating nusoap_parser');
         // parse response, get soap parser obj
-        $parser = new nusoap_parser($data, $this->xml_encoding, '', $this->decode_utf8);
+        $parser = new parser($data, $this->xml_encoding, '', $this->decode_utf8);
         // parser debug
         $this->debug("parser debug: \n" . $parser->getDebug());
         // if fault occurred during message parsing
@@ -1134,7 +1137,7 @@ class server extends base {
         if ($faultdetail == '' && $this->debug_flag) {
             $faultdetail = $this->getDebug();
         }
-        $this->fault = new nusoap_fault($faultcode, $faultactor, $faultstring, $faultdetail);
+        $this->fault = new fault($faultcode, $faultactor, $faultstring, $faultdetail);
         $this->fault->soap_defencoding = $this->soap_defencoding;
     }
 
@@ -1201,7 +1204,7 @@ class server extends base {
         if ($schemaTargetNamespace != $namespace) {
             $this->wsdl->namespaces['types'] = $schemaTargetNamespace;
         }
-        $this->wsdl->schemas[$schemaTargetNamespace][0] = new nusoap_xmlschema('', '', $this->wsdl->namespaces);
+        $this->wsdl->schemas[$schemaTargetNamespace][0] = new xmlschema('', '', $this->wsdl->namespaces);
         if ($style == 'document') {
             $this->wsdl->schemas[$schemaTargetNamespace][0]->schemaInfo['elementFormDefault'] = 'qualified';
         }

@@ -54,6 +54,7 @@
 namespace nusoap;
 
 use nusoap\base;
+use nusoap\client;
 
 /**
  *
@@ -576,7 +577,7 @@ class client extends base {
             $this->xml_encoding = 'ISO-8859-1';
         }
         $this->debug('Use encoding: ' . $this->xml_encoding . ' when creating nusoap_parser');
-        $parser = new nusoap_parser($data, $this->xml_encoding, $this->operations, $this->decode_utf8);
+        $parser = new parser($data, $this->xml_encoding, $this->operations, $this->decode_utf8);
         // add parser debug data to our debug
         $this->appendDebug($parser->getDebug());
         // if parse errors
@@ -855,7 +856,7 @@ class client extends base {
                 unset($paramCommentStr);
             }
         }
-        $evalStr = 'class nusoap_proxy_' . $r . ' extends nusoap_client {
+        $evalStr = 'class nusoap_proxy_' . $r . ' extends client {
 	' . $evalStr . '
 }';
         return $evalStr;
